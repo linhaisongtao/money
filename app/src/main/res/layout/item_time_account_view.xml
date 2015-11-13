@@ -13,6 +13,41 @@
         android:paddingRight="10dp"
         android:text="1"/>
 
+    <FrameLayout
+        android:layout_width="20dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <ImageView
+                android:id="@+id/mImageViewTop"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:src="@drawable/selector_gray_line"/>
+
+            <ImageView
+                android:id="@+id/mImageViewBottom"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:src="@drawable/selector_gray_line"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/selector_blue_round"/>
+    </FrameLayout>
+
     <TextView
         android:id="@+id/mTextViewTime"
         android:layout_width="0dp"
