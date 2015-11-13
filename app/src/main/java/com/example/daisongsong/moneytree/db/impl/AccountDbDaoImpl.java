@@ -63,6 +63,8 @@ public class AccountDbDaoImpl implements AccountDBDao {
 
     @Override
     public List<Account> queryByTime(int offset, int limit) {
+        System.out.println("offset = [" + offset + "], limit = [" + limit + "]");
+
         List<Account> accounts = new ArrayList<>();
         SQLiteDatabase db = DbUtils.getReadableDb(mContext);
         Cursor cursor = db.query(DBHelper.TABLE_ACCOUNT, new String[]{"_id", "time", "money", "cateId", "content"},
@@ -78,6 +80,16 @@ public class AccountDbDaoImpl implements AccountDBDao {
         }
         DbUtils.close(db, cursor);
         return accounts;
+    }
+
+    @Override
+    public int getTotalCount() {
+        SQLiteDatabase db = DbUtils.getReadableDb(mContext);
+        Cursor cursor = db.query(DBHelper.TABLE_ACCOUNT, new String[]{"count(*)"}, null, null, null, null, null);
+        if (cursor != null && cursor.moveToNext()) {
+            return cursor.getInt(0);
+        }
+        return 0;
     }
 
 }

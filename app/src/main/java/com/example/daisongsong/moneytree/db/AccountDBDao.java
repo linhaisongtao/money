@@ -12,4 +12,5 @@ public interface AccountDBDao {
     Account insert(Account account);
     Account update(Account account);
     List<Account> queryByTime(int offset, int limit);
+    int getTotalCount();
 }

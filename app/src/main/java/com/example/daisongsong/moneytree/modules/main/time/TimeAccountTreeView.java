@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by daisongsong on 2015/11/13.
  */
-public class TimeAccountTreeView extends FrameLayout implements ITimeTreeAccountView{
+public class TimeAccountTreeView extends FrameLayout implements ITimeTreeAccountView {
     private RecyclerView mRecyclerView;
     private TimeAccountTreeAdapter mAdapter;
     private TimeAccountTreePresenter mPresenter;
@@ -39,7 +39,7 @@ public class TimeAccountTreeView extends FrameLayout implements ITimeTreeAccount
         init();
     }
 
-    private void init(){
+    private void init() {
         mRecyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
         mAdapter = new TimeAccountTreeAdapter();
         mPresenter = new TimeAccountTreePresenter(this);
@@ -47,6 +47,25 @@ public class TimeAccountTreeView extends FrameLayout implements ITimeTreeAccount
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private boolean mPulling = false;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int lastShowPosition = ((LinearLayoutManager) recyclerView.getLayoutManager())
+                        .findLastVisibleItemPosition();
+                int nowCount = mPresenter.getNowTotalCount();
+                if (lastShowPosition + 5 > nowCount) {
+                    mPresenter.requestMore();
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
         requestFirstPage();
     }
 

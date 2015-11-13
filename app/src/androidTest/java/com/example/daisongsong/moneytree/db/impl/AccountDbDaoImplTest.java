@@ -41,4 +41,10 @@ public class AccountDbDaoImplTest extends TestCase {
             System.out.println("AccountDbDaoImplTest.testQueryByTime accounts[" + i + "] = " + accounts.get(i));
         }
     }
+
+    public void testGetTotalCount() {
+        int count = new AccountDbDaoImpl(App.getInstance()).getTotalCount();
+        System.out.println("AccountDbDaoImplTest.testGetTotalCount count = " + count);
+        Assert.assertTrue(count > 0);
+    }
 }
