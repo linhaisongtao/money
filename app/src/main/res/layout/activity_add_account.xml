@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/mEditTextMoney"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:inputType="numberDecimal"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@+id/mTextViewConfirm"
+        style="@style/default_button"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/selector_green_round_button"
+        android:text="√"
+        />
+
+</FrameLayout>

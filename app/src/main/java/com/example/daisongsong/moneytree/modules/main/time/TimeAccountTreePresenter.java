@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class TimeAccountTreePresenter {
     private ITimeTreeAccountView mView;
-    private AccountDBDao mAccountDBDao = new AccountDbDaoImpl(App.getInstance());
+    private AccountDBDao mAccountDBDao = App.getInstance() == null ? null : new AccountDbDaoImpl(App.getInstance());
 
     private List<Account> mAccounts = new ArrayList<>();
 
@@ -22,7 +22,10 @@ public class TimeAccountTreePresenter {
     }
 
     public void requestFirstPage() {
-        mAccounts = mAccountDBDao.queryByTime(0, 20);
-        mView.showList(mAccounts);
+        if (mAccountDBDao != null) {
+            mAccounts = mAccountDBDao.queryByTime(0, 20);
+            mView.showList(mAccounts);
+        }
+
     }
 }

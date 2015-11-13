@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
 
     <com.example.daisongsong.moneytree.modules.main.time.TimeAccountTreeView
+        android:id="@+id/mTimeAccountTreeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/mTextViewAddNewAccount"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/selector_blue_round_button"
+        android:text="+"
+        android:textColor="@android:color/white"
+        style="@style/default_button"/>
+
+
+</FrameLayout>

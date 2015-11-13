@@ -26,6 +26,9 @@
             android:name=".modules.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.newaccount.AddAccountActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

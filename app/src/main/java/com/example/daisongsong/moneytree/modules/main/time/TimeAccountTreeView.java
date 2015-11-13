@@ -47,12 +47,16 @@ public class TimeAccountTreeView extends FrameLayout implements ITimeTreeAccount
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        mPresenter.requestFirstPage();
+        requestFirstPage();
     }
 
     @Override
     public void showList(List<Account> accounts) {
         mAdapter.setAccounts(accounts);
         mAdapter.notifyDataSetChanged();
+    }
+
+    public void requestFirstPage() {
+        mPresenter.requestFirstPage();
     }
 }
