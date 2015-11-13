@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by daisongsong on 2015/11/13.
  */
 public class DBHelper extends SQLiteOpenHelper {
+    public static final String TABLE_ACCOUNT = "m";
+
     private static final int DB_VERSION = 4;
 
     public DBHelper(Context context) {
@@ -16,6 +18,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createTables(db);
+    }
+
+    private void createTables(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS m" +
                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, time LONG, money LONG, cateId INTEGER, content VARCHAR)");
         db.execSQL("CREATE TABLE IF NOT EXISTS cate" +
@@ -27,8 +33,8 @@ public class DBHelper extends SQLiteOpenHelper {
         System.out.println("DBHelper.onUpgrade");
         if (newVersion > oldVersion) {
             db.execSQL("DROP TABLE m");
-            db.execSQL("CREATE TABLE IF NOT EXISTS m" +
-                    "(_id INTEGER PRIMARY KEY AUTOINCREMENT, time LONG, money LONG, cateId INTEGER, content VARCHAR)");
+            db.execSQL("DROP TABLE cate");
+            createTables(db);
         }
     }
 }
