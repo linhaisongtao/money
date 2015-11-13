@@ -58,6 +58,10 @@ public class Account {
         this.money = money;
     }
 
+    public double getMoneyInYuanDouble() {
+        return 1.0 * money / 100;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
